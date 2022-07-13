@@ -13,21 +13,14 @@ import java.time.format.DateTimeFormatter;
 
 @Configuration
 public class Jackson {
-    private static final String dateFormat = "yyyy-MM-dd";
-
-    private static final String dateTimeFormat = "yyyy-MM-dd HH:mm:ss";
-
     @Bean
-    @ConditionalOnProperty(value = "spring.jackson.date-format", matchIfMissing = true, havingValue = "none")
-    public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
-        return new Jackson2ObjectMapperBuilderCustomizer() {
-            @Override
-            public void customize(Jackson2ObjectMapperBuilder builder) {
-                builder.simpleDateFormat(dateTimeFormat);
-                builder.serializers(new LocalDateSerializer(DateTimeFormatter.ofPattern(dateFormat)));
-                builder.serializers(new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(dateTimeFormat)));
-            }
+    public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer(){
+        return jacksonObjectMapperBuilder -> {
+            jacksonObjectMapperBuilder.serializers(
+                    new LocalDateTimeSerializer(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+            jacksonObjectMapperBuilder.deserializers(
+                    new LocalDateTimeDeserializer(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+
         };
     }
-
 }
