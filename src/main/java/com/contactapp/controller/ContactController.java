@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +20,11 @@ public class ContactController {
     public List<Contact> getContacts() {
         List<Contact> contacts = new ArrayList<>();
 
-        Contact contact1 = new Contact("John Doe", "123 Sesame Street", "123-456-789", LocalDate.now(), LocalDateTime.now());
-        Contact contact2 = new Contact("John Doe 2", "124 Sesame Street", "123-456-789", LocalDate.now(), LocalDateTime.now());
-        Contact contact3 = new Contact("John Doe 3", "125 Sesame Street", "123-456-789", LocalDate.now(), LocalDateTime.now());
+        Contact contact1 = new Contact("Camila Barpp", "Av Dr João da Silva, 2368", "975451255", LocalDate.now(), LocalTime.now());
+        Contact contact2 = new Contact("Guilherme Alves", "Rua Pinto Bandeira, 5269", "945632875", LocalDate.of(1996,8,28), LocalTime.of(14,12,56));
 
         contacts.add(contact1);
         contacts.add(contact2);
-        contacts.add(contact3);
 
         return contacts;
     }

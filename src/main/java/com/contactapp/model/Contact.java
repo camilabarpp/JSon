@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,10 +17,10 @@ public class Contact {
     private String phone;
 
     @JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate birthday;
+    private LocalDate date;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime lastUpdate;
+    @JsonFormat(pattern="HH:mm:ss")
+    private LocalTime lastTime;
 
 
 }
